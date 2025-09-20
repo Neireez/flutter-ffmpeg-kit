@@ -20,6 +20,19 @@
 #import "FFmpegKitFlutterPlugin.h"
 
 #import <ffmpegkit/FFmpegKitConfig.h>
+#import <ffmpegkit/FFmpegKit.h>
+#import <ffmpegkit/FFprobeKit.h>
+#import <ffmpegkit/FFmpegSession.h>
+#import <ffmpegkit/FFprobeSession.h>
+#import <ffmpegkit/MediaInformationSession.h>
+#import <ffmpegkit/MediaInformationJsonParser.h>
+#import <ffmpegkit/ArchDetect.h>
+#import <ffmpegkit/Packages.h>
+#import <ffmpegkit/AbstractSession.h>
+#import <ffmpegkit/Log.h>
+#import <ffmpegkit/Statistics.h>
+#import <ffmpegkit/MediaInformation.h>
+#import <ffmpegkit/ReturnCode.h>
 
 static NSString *const PLATFORM_NAME = @"ios";
 

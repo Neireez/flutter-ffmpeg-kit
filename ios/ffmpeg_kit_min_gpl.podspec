@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'ffmpeg_kit_min_gpl'
-  s.version = '6.0.3'
+  s.version = '6.0.3+3'
   s.summary          = 'FFmpeg Kit for Flutter'
   s.description      = 'A Flutter plugin for running FFmpeg and FFprobe commands.'
   s.homepage         = 'https://github.com/arthenica/ffmpeg-kit'
@@ -17,7 +17,12 @@ Pod::Spec.new do |s|
 
   s.default_subspec = 'min-gpl'
   s.dependency          'Flutter'
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
+  s.pod_target_xcconfig = { 
+    'DEFINES_MODULE' => 'YES', 
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
+    'OTHER_LDFLAGS' => '-lc++ -lz -lbz2 -liconv',
+    'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
+  }
 
   s.prepare_command = <<-CMD
     download_url="https://github.com/meetleev/ffmpeg-kit-prebuilt/releases/download/6.0.3/ffmpeg-kit-ios-min-gpl.zip" 
@@ -47,7 +52,7 @@ Pod::Spec.new do |s|
     ss.public_header_files  = 'Classes/**/*.h'
     # ss.dependency 'ffmpeg-kit-ios-min-gpl', "6.0"
     ss.vendored_frameworks = 'Frameworks/*.framework'
-    ss.ios.frameworks = 'VideoToolbox'
+    ss.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreAudio', 'CoreImage', 'CoreMedia', 'CoreVideo'
     ss.libraries = 'z', 'bz2', 'c++', 'iconv'
     ss.ios.deployment_target = '12.1'
   end
@@ -57,7 +62,7 @@ Pod::Spec.new do |s|
     ss.public_header_files  = 'Classes/**/*.h'
     # ss.dependency 'ffmpeg-kit-ios-min-gpl', "6.0.LTS"
     ss.vendored_frameworks = 'Frameworks/*.framework'
-    ss.ios.frameworks = 'VideoToolbox'
+    ss.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreAudio', 'CoreImage', 'CoreMedia', 'CoreVideo'
     ss.libraries = 'z', 'bz2', 'c++', 'iconv'
     ss.ios.deployment_target = '10'
   end
@@ -67,7 +72,7 @@ Pod::Spec.new do |s|
     ss.public_header_files  = 'Classes/**/*.h'
     # ss.dependency 'ffmpeg-kit-ios-https', "6.0"
     ss.vendored_frameworks = 'Frameworks/*.framework'
-    ss.ios.frameworks = 'VideoToolbox'
+    ss.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreAudio', 'CoreImage', 'CoreMedia', 'CoreVideo'
     ss.libraries = 'z', 'bz2', 'c++', 'iconv'
     ss.ios.deployment_target = '12.1'
   end
@@ -77,7 +82,7 @@ Pod::Spec.new do |s|
     ss.public_header_files  = 'Classes/**/*.h'
     # ss.dependency 'ffmpeg-kit-ios-https', "6.0.LTS"
     ss.vendored_frameworks = 'Frameworks/*.framework'
-    ss.ios.frameworks = 'VideoToolbox'
+    ss.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreAudio', 'CoreImage', 'CoreMedia', 'CoreVideo'
     ss.libraries = 'z', 'bz2', 'c++', 'iconv'
     ss.ios.deployment_target = '10'
   end
